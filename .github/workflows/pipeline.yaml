@@ -3,6 +3,7 @@ name: CI/CD Pipeline for RAG application
 on:
   push:
     branches:
+      - master
       - main
 
   workflow_dispatch:
