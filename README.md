@@ -26,3 +26,17 @@ Start the FastAPI application locally
 ```bash
 uvicorn main:app --reload
 ```
+
+## Run the application using Makefile
+Pull the Mistral model using Ollama
+```bash
+make ollama-pull
+```
+Build the Docker image
+```bash
+make build
+```
+Run the Docker container
+```bash
+make run
+```
