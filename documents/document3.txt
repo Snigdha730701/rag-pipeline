@@ -1,0 +1,3 @@
+Ollama allows you to run open-source large language models locally.
+It simplifies the process of downloading, running, and managing various models like LLaMA 2, Mistral, and others.
+Ollama provides an API for interacting with these models.
