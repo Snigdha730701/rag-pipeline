@@ -40,4 +40,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Docker image
-        run: docker build -t local-rag-app .
+        run: make build

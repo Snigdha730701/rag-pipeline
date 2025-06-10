@@ -40,3 +40,9 @@ Run the Docker container
 ```bash
 make run
 ```
+
+## Screenshot
+
+![Project Screenshot showing the main UI](Image/Output-image.jpg "Main UI Screenshot")
+
+Output
