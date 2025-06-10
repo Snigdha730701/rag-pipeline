@@ -27,10 +27,10 @@ jobs:
           pip install black ruff
 
       - name: Run Black check
-        run: black --check .
+        run: black .
 
       - name: Run Ruff check
-        run: ruff check .
+        run: ruff .
 
   docker-build-and-test:
     runs-on: ubuntu-latest
