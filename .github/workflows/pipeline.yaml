@@ -30,7 +30,7 @@ jobs:
         run: black .
 
       - name: Run Ruff check
-        run: ruff .
+        run: ruff check .
 
   docker-build-and-test:
     runs-on: ubuntu-latest
