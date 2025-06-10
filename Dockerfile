@@ -3,7 +3,10 @@ FROM python:3.10-slim-buster
 
 WORKDIR /app
 
+RUN chmod -R 777 /app
+
 COPY requirements.txt .
+
 
 RUN pip install -r requirements.txt
 

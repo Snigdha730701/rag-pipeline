@@ -1,8 +1,11 @@
 # Define variables
-APP_NAME = local-rag-app
+APP_NAME = local-rag-pipeline
 APP_PORT = 8000
 
-
+# For Docker Desktop (macOS/Windows), use host.docker.internal to access host services.
+# For Linux, you might need to use `--network host` in the run command,
+# or find your host's IP address (e.g., `ip a` and use the bridge IP like 172.17.0.1).
+# We'll stick with host.docker.internal for broader compatibility with Docker Desktop.
 OLLAMA_HOST = http://host.docker.internal:11434
 
 .PHONY: all build run stop clean ollama-pull
@@ -21,8 +24,7 @@ run:
 		--name $(APP_NAME) \
 		-p $(APP_PORT):$(APP_PORT) \
 		-v $(PWD)/documents:/app/documents \
-		-v $(PWD)/faiss_index:/app/faiss_index \
-		-e OLLAMA_HOST=$(OLLAMA_HOST) \
+		--network host \
 		$(APP_NAME)
 	@echo "Container $(APP_NAME) started. Access FastAPI at http://localhost:$(APP_PORT)/docs"
 	@echo "Check logs with: docker logs $(APP_NAME)"

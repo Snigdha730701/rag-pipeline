@@ -81,16 +81,10 @@ def initialize_rag_pipeline():
     embeddings = OllamaEmbeddings(model=MODEL_NAME, base_url=OLLAMA_HOST)
 
     # 4. Create or Load FAISS Vector Store
-    if os.path.exists(FAISS_DB_PATH):
-        print(f"Loading existing FAISS index from {FAISS_DB_PATH}...")
-        # IMPORTANT: allow_dangerous_deserialization=True is needed for loading FAISS indices
-        # saved by langchain_community. Use with caution and only if you trust the source.
-        vectorstore = FAISS.load_local(FAISS_DB_PATH, embeddings, allow_dangerous_deserialization=True)
-    else:
-        print("Creating new FAISS index...")
-        vectorstore = FAISS.from_documents(splits, embeddings)
-        vectorstore.save_local(FAISS_DB_PATH)
-        print(f"FAISS index created and saved to {FAISS_DB_PATH}")
+    print("DEBUG: Forcing creation of new FAISS index...")
+    vectorstore = FAISS.from_documents(splits, embeddings)
+    vectorstore.save_local(FAISS_DB_PATH)
+    print(f"FAISS index created and saved to {FAISS_DB_PATH}")
 
     # 5. Initialize LLM (using Ollama)
     print(f"Initializing Ollama LLM with model: {MODEL_NAME} and base_url: {OLLAMA_HOST}...")
